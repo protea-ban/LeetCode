@@ -2,7 +2,7 @@
 #-*- coding:utf-8 -*-
 """
 @author:BanShaohuan
-@file: Two Sum.py
+@file: 1.Two Sum.py
 """
 class Solution:
     def twoSum(self, nums, target):
