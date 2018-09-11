@@ -30,3 +30,31 @@ Write the code that will take a string and make this conversion given a number o
 - 2 * numRows - 2 - (i % (2 * numRows - 2)), if i % (2 * numRows - 2) >= numRows 
 
 有了这个结果，对于任意一个位置的字符我们都知道它应该在第几行。
+
+```python
+class Solution:
+
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        # 考虑到特殊情况，即行数小于等于1或者行数大于等于字符串长度
+        if numRows <= 1 or numRows >= len(s):
+            return s
+
+        arr = [''] * numRows
+
+        for i in range(len(s)):
+            tmp = i % (numRows + numRows - 2)
+
+            if tmp < numRows:
+                arr[tmp] += s[i]
+            else:
+                arr[numRows + numRows - 2 - tmp] += s[i]
+
+        return ''.join(arr)
+```
+
+GitHub地址：https://github.com/protea-ban/LeetCode
