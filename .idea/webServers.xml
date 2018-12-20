@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1464b1ba-3b7e-4bcf-9036-b0fc2049ceb4" name="awsUbuntu" url="http://3.83.251.33">
+        <fileTransfer host="3.83.251.33" port="22" privateKey="C:\Users\bsh\Downloads\myubuntu.pem" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

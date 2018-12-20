@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Copy of project-level server 'awsUbuntu'">
+    <serverData>
+      <paths name="Copy of project-level server 'awsUbuntu'">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/ubuntu/workspace/testDemo" local="$PROJECT_DIR$/../awsUbuntu/testDemo" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/root/anaconda3/bin/python" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="awsUbuntu">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/ubuntu/workspace" local="$PROJECT_DIR$/../awsUbuntu" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/root/anaconda3/bin/python" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
