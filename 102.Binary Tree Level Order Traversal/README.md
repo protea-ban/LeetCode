@@ -1,21 +1,13 @@
-# 105. 从前序与中序遍历序列构造二叉树
+# 102. 二叉树的层次遍历
 
 
 ### 描述
 
-根据一棵树的前序遍历与中序遍历构造二叉树。
-
-注意:
-你可以假设树中没有重复的元素。
+给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。
 
 ### 示例
 
-例如，给出
-
-    前序遍历 preorder = [3,9,20,15,7]
-    中序遍历 inorder = [9,3,15,20,7]
-
-返回如下的二叉树：
+例如，给定二叉树: [3,9,20,null,null,15,7],
 
 ```
     3
@@ -24,12 +16,21 @@
     /  \
    15   7
 ```
+返回其层次遍历结果：
+
+    [
+      [3],
+      [9,20],
+      [15,7]
+    ]
 
 ## 思路
 
-一颗二叉树，对于前序遍历来说，其第一个元素一定是这棵树的根节点。在中序遍历中找到这个元素所在的位置，那么它的左半部分就是其左子树，右半部分就是其右子树。
+关于树的问题基本上都是用递归来解决的，此题也是需要考虑递归。
 
-重复上述过程， 通过前序遍历找到根节点， 然后在中序遍历数据中根据根节点拆分成两个部分， 同时将对应的前序遍历的数据也拆分成两个部分， 重复递归， 就可以得到整个二叉树了。
+对树，常使用的查找方法有深度优先查找和广度优先查找，在此使用 DFS ，因为它的代码易于理解。
+
+层次遍历的核心在于需要设置一个层数变量，在进行 DFS 的时候将节点放入相应层数的列表中。
 
 ```python
 # Definition for a binary tree node.
@@ -39,22 +40,27 @@
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
-    def buildTree(self, preorder, inorder):
+    def levelOrder(self, root):
         """
-        :type preorder: List[int]
-        :type inorder: List[int]
-        :rtype: TreeNode
+        :type root: TreeNode
+        :rtype: List[List[int]]
         """
-        if not inorder or len(inorder) == 0:
-            return None
+        def dfs(root, level, res):
+            if root is None:
+                return
 
-        root = TreeNode(preorder[0])
-        idx = inorder.index(preorder[0])
-        root.left = self.buildTree(preorder[1:idx+1], inorder[:idx])
-        root.right = self.buildTree(preorder[idx+1:], inorder[idx+1:])
+            if len(res) <= level:
+                res.append([])
 
-        return root
+            res[level].append(root.val)
+            dfs(root.left, level+1, res)
+            dfs(root.right, level+1, res)
+
+        res = []
+        dfs(root, 0, res)
+        return res
 ```
 
 GitHub 地址： https://github.com/protea-ban/LeetCode
