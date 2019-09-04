@@ -21,6 +21,8 @@
 
 ## 思路
 
+### 方法一
+
 设输入的数为 n ， 把 n 与 1 做二进制的与 (AND) 运算，即可判断它的最低位是否为 1 。 如果是的话，把计数变量加一。然后把 n 向右移动一位， 重复上述操作。 当 n 变为 0 时， 终止算法， 输出结果。
 
 ```python
@@ -37,6 +39,25 @@ class Solution(object):
                 count += 1
             # n右移一位
             n >>= 1
+
+        return count
+```
+
+### 方法二
+
+利用位运算 `n & n - 1` 可以消除最后一位 1 的特性，不断消除 1 ，最后对操作次数计数即可。
+
+```python
+class Solution(object):
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        count = 0
+        while n != 0:
+            count += 1
+            n &= n - 1
 
         return count
 ```
